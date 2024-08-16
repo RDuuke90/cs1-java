@@ -3,64 +3,64 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package calculadora;
-
-import java.util.Scanner;
+package calculadorahistorico;
 
 /**
  *
  * @author ESTUDIANTE
  */
-public class Calculadora {
+import java.util.Scanner;
+public class CalculadoraHistorico {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         
-        int seleccion = 0;
-        String historial = "";
+        Scanner sc = new Scanner(System.in);
+        int seleccion = 0, a = 0, b = 0;
+        String operador = "", historial = "";
         do{
-            System.out.println("CALCULADORA!!");
-            System.out.println("1) Realizar operacion");
-            System.out.println("2) Ver ultimo registro");
+            System.out.println("1) Operaciones");
+            System.out.println("2) Historial");
             System.out.println("3) Salir");
-            System.out.print("Ingrese opcion: ");
+            System.out.print("Seleccion: ");
+            
             seleccion = sc.nextInt();
             sc.nextLine();
             
             switch (seleccion) {
                 case 1:
-                    System.out.print("Ingrese el 1er numero: ");            
-                    int a = sc.nextInt();
+                    System.out.print("Nro uno: ");
+                    a = sc.nextInt();
                     sc.nextLine();
-                    System.out.print("Ingrese el operador + o -: ");
-                    String operador = sc.nextLine();
-                    System.out.print("Ingrese el 2do numero: ");            
-                    int b = sc.nextInt();
+                    System.out.print("Operador + o -: ");
+                    operador = sc.nextLine();
+                    System.out.print("Nro dos: ");
+                    b = sc.nextInt();
                     sc.nextLine();
-                    int resultado;
+                    int resultado = 0;
                     if(operador.equals("+")){
-                        resultado = a+b;
-                    } else{
-                        resultado = a-b;
+                       resultado = a+b;
+                    } else {
+                       resultado = a-b;
                     }
-                    System.out.println(a + operador + b + " = "+resultado);
-                    historial = a + operador + b + " = "+resultado;
+                    historial = a + operador + b + "="+resultado;
+                    System.out.println(historial);
                     break;
                 case 2:
-                    if(historial.isEmpty()){
+                    if(historial.isEmpty())
+                    {
                         System.out.println("No hay historial");
                     } else {
-                        System.out.println("La ultima operacion es: "+historial);
+                        System.out.println(historial);
                     }
                     break;
                 default:
-                    seleccion = 3;
                     break;
             }
-        } while(seleccion != 3);
+            
+        }while(seleccion != 3);        
     }
     
 }
